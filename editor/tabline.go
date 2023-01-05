@@ -307,8 +307,9 @@ func (t *Tab) setActive(active bool) {
 }
 
 func (t *Tab) updateFileText() {
-	path, _ := shortpath.PrettyMinimum(t.fileText)
-	t.file.SetText(path)
+	split := strings.split(t.fileText, '/')
+	filename := split[len(split)-1]
+	t.file.SetText(filename)
 	t.updateSize()
 }
 
